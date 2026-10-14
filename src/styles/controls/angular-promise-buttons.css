@@ -82,7 +82,7 @@
     -ms-animation: three-quarters 1250ms infinite linear;
     -o-animation: three-quarters 1250ms infinite linear;
     animation: three-quarters 1250ms infinite linear;
-    border: 3px solid #8c8c8c;
+    border: 2px solid currentColor;
     border-right-color: transparent;
     border-radius: 100%;
     box-sizing: border-box;
@@ -91,12 +91,12 @@
     vertical-align: middle;
     overflow: hidden;
     text-indent: -9999px;
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
 }
 
-.btn-primary .btn-spinner:not(:required), .btn-danger .btn-spinner:not(:required) {
-    border: 3px solid #efefef;
+.btn-primary .btn-spinner:not(:required), .btn-danger .btn-spinner:not(:required), .btn-success .btn-spinner:not(:required) {
+    border: 2px solid currentColor;
     border-right-color: transparent;
 }
 

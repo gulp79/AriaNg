@@ -1,0 +1,77 @@
+name: Build AriaNg
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+    inputs:
+      build_target:
+        description: 'Target version to build'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - 'standard'
+          - 'all-in-one'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build & Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install -g gulp-cli
+
+      # -------------------------------------------------------------
+      # Standard Version Build
+      # -------------------------------------------------------------
+      - name: Build Standard Version ($ gulp clean build)
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.build_target == 'all' || inputs.build_target == 'standard' }}
+        run: gulp clean build
+
+      - name: Upload Standard Version Artifact
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.build_target == 'all' || inputs.build_target == 'standard' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: AriaNg-Standard-${{ github.ref_name }}
+          path: dist/
+          include-hidden-files: true
+          if-no-files-found: error
+
+      # -------------------------------------------------------------
+      # All-In-One Version Build
+      # -------------------------------------------------------------
+      - name: Build All-In-One Version ($ gulp clean build-bundle)
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.build_target == 'all' || inputs.build_target == 'all-in-one' }}
+        run: gulp clean build-bundle
+
+      - name: Upload All-In-One Version Artifact
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.build_target == 'all' || inputs.build_target == 'all-in-one' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: AriaNg-AllInOne-${{ github.ref_name }}
+          path: dist/
+          include-hidden-files: true
+          if-no-files-found: error

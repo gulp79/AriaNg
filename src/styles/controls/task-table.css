@@ -1,7 +1,11 @@
 /* task-table */
 .task-table {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 12px 15px;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
 
 @media screen and (orientation: landscape) {
@@ -12,14 +16,32 @@
 }
 
 .task-table .task-table-title {
-    font-size: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 14px;
+    background-color: var(--surface-panel);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .task-table .task-table-title a {
-    color: #000;
+    color: var(--text-muted);
     cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color var(--transition-fast);
+}
+
+.task-table .task-table-title a:hover {
+    color: var(--accent-primary);
+}
+
+.task-table .task-table-title a .fa-display-order {
+    color: var(--accent-primary);
+    font-size: 11px;
 }
 
 .task-table > .task-table-body.draggable {
@@ -38,9 +60,18 @@
 }
 
 .task-table > .task-table-body > div.row {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+    transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.task-table > .task-table-body > div.row[data-selected="true"] {
+    background-color: var(--surface-selected);
+    box-shadow: inset 3px 0 0 var(--accent-primary);
 }
 
 .task-table > div.row:first-child {
@@ -48,6 +79,11 @@
 }
 
 @media (max-width: 767px) {
+    .task-table {
+        margin: 8px 8px;
+        border-radius: var(--radius-sm);
+    }
+
     .task-table > .task-table-title {
         display: none !important;
     }
@@ -58,8 +94,12 @@
 }
 
 .task-table .task-name {
-    font-size: 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-primary);
     display: block;
+    letter-spacing: -0.01em;
 }
 
 .task-table .peer-name-wrapper {
@@ -69,16 +109,46 @@
 
 .task-table .task-files, .task-table .task-size {
     font-size: 12px;
+    color: var(--text-secondary);
     display: block;
+    margin-top: 2px;
+}
+
+.task-table .task-files a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.task-table .task-files a:hover {
+    text-decoration: underline;
 }
 
 .task-table .progress {
-    margin-bottom: 0;
+    height: 14px;
+    line-height: 14px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    position: relative;
+    background-color: var(--surface-hover);
+    border-radius: var(--radius-pill);
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.task-table .progress .progress-bar {
+    height: 14px;
+    line-height: 14px;
+    border-radius: var(--radius-pill);
+    box-shadow: none;
+    transition: width 0.25s ease;
 }
 
 .task-table .task-last-time, .task-table .task-seeders, .task-table .task-last-time + .task-download-speed {
-    color: #888;
-    font-size: 12px;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
 }
 
 .task-table .task-seeders, .task-table .task-last-time + .task-download-speed {
@@ -91,6 +161,10 @@
 
 .task-table .task-download-speed, .task-table .task-peer-download-speed {
     font-size: 12px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-secondary);
 }
 
 .task-table .checkbox, .task-table .radio {
@@ -98,18 +172,23 @@
     margin-bottom: 0;
 }
 
-.task-table .progress {
-    position: relative;
-}
-
 .task-table .progress span {
     position: absolute;
+    left: 0;
+    top: 0;
     display: block;
     width: 100%;
+    height: 14px;
+    line-height: 14px;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    text-align: center;
+    color: #ffffff;
 }
 
 .task-table .progress span.progress-lower {
-    color: #000;
+    color: var(--text-secondary);
 }
 
 @media (max-width: 767px) {
@@ -122,7 +201,9 @@
     visibility: hidden;
     position: absolute;
     right: 14px;
-    margin-top: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
 }
 
 .task-table .row:hover .task-right-arrow, .task-table .row[data-selected=true] .task-right-arrow {
@@ -130,10 +211,12 @@
 }
 
 .task-table .task-right-arrow i {
-    color: #c8c8c8;
-    font-size: 60px;
+    color: var(--text-muted);
+    font-size: 18px;
+    transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .task-table .task-right-arrow i:hover {
-    color: #d8d8d8;
+    color: var(--accent-primary);
+    transform: translateX(2px);
 }
