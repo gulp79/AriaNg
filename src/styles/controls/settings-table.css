@@ -1,7 +1,11 @@
 /* settings-table */
 .settings-table {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 12px 15px;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
 
 @media screen and (orientation: landscape) {
@@ -12,14 +16,25 @@
 }
 
 .settings-table .settings-table-title {
-    font-size: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 14px;
+    background-color: var(--surface-panel);
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-muted);
 }
 
 .settings-table .settings-table-title a {
-    color: #000;
+    color: var(--text-muted);
     cursor: pointer;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.settings-table .settings-table-title a:hover {
+    color: var(--accent-primary);
 }
 
 .settings-table .settings-table-title .settings-table-title-toolbar {
@@ -28,9 +43,12 @@
 }
 
 .settings-table > div.row {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-top: 1px solid #ddd;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-left: 0;
+    margin-right: 0;
+    border-top: 1px solid var(--border-subtle);
+    transition: background-color var(--transition-fast);
 }
 
 @media screen and (orientation: landscape) {
@@ -46,26 +64,30 @@
 }
 
 .settings-table + .settings-table > div.row:first-child {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-subtle);
 }
 
 .settings-table .input-group-addon {
-    background-color: #eee;
+    background-color: var(--surface-panel);
+    border-color: var(--border-default);
+    color: var(--text-secondary);
 }
 
 .settings-table .asterisk {
-    color: red;
+    color: var(--status-error);
 }
 
 .settings-table .description, .settings-table .description-inline {
-    color: #888;
+    color: var(--text-muted);
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
+    line-height: 1.4;
 }
 
 .settings-table .description {
     display: block;
+    margin-top: 2px;
 }
 
 .settings-table .description-inline {
@@ -73,9 +95,29 @@
 }
 
 .settings-table em {
-    color: #888;
+    color: var(--text-muted);
     font-size: 12px;
     font-weight: normal;
+}
+
+.settings-table .setting-key {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.settings-table .setting-value {
+    color: var(--text-primary);
+    font-size: 13px;
+}
+
+.settings-table .setting-value a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.settings-table .setting-value a:hover {
+    text-decoration: underline;
 }
 
 .settings-table .setting-value .form-group {
@@ -83,7 +125,7 @@
 }
 
 .settings-table .setting-value .form-group .form-control-icon {
-    color: #3c8dbc;
+    color: var(--accent-primary);
 }
 
 .settings-table .setting-value .form-group select.form-control + .form-control-icon > .form-control-feedback {
@@ -114,7 +156,10 @@
 
 .settings-table .tip {
     font-size: 12px;
-    padding: 4px 8px 4px 8px;
+    padding: 4px 8px;
+    border-radius: var(--radius-xs);
+    background-color: var(--surface-hover);
+    color: var(--text-secondary);
 }
 
 .settings-table .multi-line {
@@ -122,8 +167,14 @@
 }
 
 @media (max-width: 767px) {
+    .settings-table {
+        margin: 8px 8px;
+        border-radius: var(--radius-sm);
+    }
+
     .settings-table .setting-key {
-        font-weight: bold;
+        font-weight: 600;
+        margin-bottom: 3px;
     }
 
     .settings-table .description {

@@ -1,15 +1,17 @@
 /* chart */
 .chart-popover {
     max-width: 320px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 .chart-popover .popover-content {
-    padding: 0;
+    padding: 4px;
+    background-color: var(--surface-card);
 }
 
 .chart-pop-wrapper {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding: 4px;
     overflow-x: hidden;
 }
 
@@ -23,6 +25,7 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+    color: var(--text-muted);
 }
 
 .global-status-chart {
@@ -32,4 +35,5 @@
 
 .task-status-chart-wrapper {
     overflow-x: hidden;
+    border-radius: var(--radius-sm);
 }
