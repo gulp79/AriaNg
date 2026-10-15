@@ -8,6 +8,12 @@ build/
 dist/
 design-reference/
 AriaNg_UI_Modernization_Workflow.md
+.custom-merge-manifest.yml
+promptMerge.md
+MERGE_REPORT.md
+CONFLICT_REPORT.md
+CUSTOM_CHANGES_AUDIT.md
+COMPATIBILITY_REPORT.md
 AGENTS.md
 ### Windows template
 # Windows image file caches

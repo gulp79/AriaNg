@@ -1,3 +1,5 @@
+[![GitHub release](https://img.shields.io/github/v/release/gulp79/AriaNg?include_prereleases)](https://github.com/gulp79/AriaNg/releases/latest)  ![Total Downloads](https://img.shields.io/github/downloads/gulp79/AriaNg/total)  ![Latest Downloads](https://img.shields.io/github/downloads/gulp79/AriaNg/latest/total)
+
 # AriaNg
 [![License](https://img.shields.io/github/license/mayswind/AriaNg.svg?style=flat)](https://github.com/mayswind/AriaNg/blob/master/LICENSE)
 [![Lastest Build](https://img.shields.io/github/actions/workflow/status/mayswind/AriaNg/build-snapshot.yml?branch=master)](https://github.com/mayswind/AriaNg/actions)
